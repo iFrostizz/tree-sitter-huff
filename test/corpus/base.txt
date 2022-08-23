@@ -1,0 +1,18 @@
+==================
+Sample contract
+==================
+
+#define macro MAIN() = takes (0) returns (0) {}
+
+---
+
+(source_file
+  (definition
+    (macro_definition
+      (identifier)
+      (takes_parameters)
+      (returns_parameters)
+      (block)
+    )
+  )
+)

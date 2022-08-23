@@ -1,0 +1,100 @@
+{
+  "name": "huff",
+  "rules": {
+    "source_file": {
+      "type": "REPEAT",
+      "content": {
+        "type": "SYMBOL",
+        "name": "definition"
+      }
+    },
+    "definition": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "macro_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "function_definition"
+        }
+      ]
+    },
+    "_def": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "takes_parameters"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "returns_parameters"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "block"
+        }
+      ]
+    },
+    "macro_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "#define macro "
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_def"
+        }
+      ]
+    },
+    "function_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "#define fn "
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_def"
+        }
+      ]
+    },
+    "takes_parameters": {
+      "type": "PATTERN",
+      "value": "takes\\s?[(][0-9]+[)]"
+    },
+    "returns_parameters": {
+      "type": "PATTERN",
+      "value": "returns\\s?[(][0-9]+[)]"
+    },
+    "block": {
+      "type": "STRING",
+      "value": "{}"
+    },
+    "identifier": {
+      "type": "PATTERN",
+      "value": "([A-Za-z]+)\\(\\)( = )"
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\s"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": []
+}
+
