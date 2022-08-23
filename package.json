@@ -15,5 +15,17 @@
   },
   "scripts": {
     "test": "tree-sitter test"
-  }
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.huff",
+      "file-types": [
+        "huff"
+      ],
+      "highlights": [
+        "queries/highlights.scm"
+      ],
+      "injection-regex": "^(sol)$"
+    }
+  ]
 }
