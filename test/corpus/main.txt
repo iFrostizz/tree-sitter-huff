@@ -1,0 +1,41 @@
+==================
+Main
+==================
+
+#define macro MAIN() = takes (0) returns (0) {
+    0x00 calldataload 0xE0 shr
+    dup1 0x55241077 eq set jumpi
+    
+    set:
+        SET_VALUE()
+}
+
+---
+
+(source_file
+  (definition
+    (macro_definition
+      (identifier)
+      (parameters)
+      (takes_parameters)
+      (returns_parameters)
+      (block
+        (hex)
+        (opcode)
+        (hex)
+        (opcode)
+        
+        (opcode)
+        (hex)
+        (opcode)
+        (label)
+        (opcode)
+        
+        (label)
+        (macro_call
+          (identifier)
+        )
+      )
+    )
+  )
+)

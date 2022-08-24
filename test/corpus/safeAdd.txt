@@ -1,0 +1,79 @@
+==================
+SafeAdd
+==================
+
+#define macro SAFE_ADD() = takes (0) returns (0) {
+    0x04 calldataload        // [a]
+    0x24 calldataload        // [b, a]
+    dup2                     // [a, b, a]
+    add                      // [a + b, a]
+    dup1                     // [a + b, a + b, a]
+    swap2                    // [a, a + b, a + b]
+    gt                       // [is_overflow, a + b]
+    iszero                   // [not_overflow, a + b]
+
+    is_not_overflow jumpi
+        0x00 0x00 revert
+
+    is_not_overflow:         // [a + b]
+    0x00 mstore              // []
+    0x20 0x00 return         // []
+}
+
+---
+
+(source_file
+  (definition
+    (macro_definition
+      (identifier)
+      (parameters)
+      (takes_parameters)
+      (returns_parameters)
+      (block
+          (hex)
+          (opcode)
+          (comment)
+        
+          (hex)
+          (opcode)
+          (comment)
+        
+          (opcode)
+          (comment)
+        
+          (opcode)
+          (comment)
+        
+          (opcode)
+          (comment)
+        
+          (opcode)
+          (comment)
+        
+          (opcode)
+          (comment)
+        
+          (opcode)
+          (comment)
+        
+          (label)
+          (opcode)
+        (hex)
+        (hex)
+        (opcode)
+        
+        (label)
+        (comment)
+        
+        (hex)
+        (opcode)
+        (comment)
+        
+        (hex)
+        (hex)
+        (opcode)
+        (comment)
+      )
+    )
+  )
+)

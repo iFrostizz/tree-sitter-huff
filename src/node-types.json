@@ -1,5 +1,104 @@
 [
   {
+    "type": "block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "const_access",
+          "named": true
+        },
+        {
+          "type": "hex",
+          "named": true
+        },
+        {
+          "type": "label",
+          "named": true
+        },
+        {
+          "type": "macro_call",
+          "named": true
+        },
+        {
+          "type": "opcode",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "const",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "const_access",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "constant",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "const",
+          "named": true
+        },
+        {
+          "type": "hex",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "constant_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "constant",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "definition",
     "named": true,
     "fields": {},
@@ -7,6 +106,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "constant_definition",
+          "named": true
+        },
         {
           "type": "function_definition",
           "named": true
@@ -54,6 +157,11 @@
     }
   },
   {
+    "type": "identifier",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "interface_definition",
     "named": true,
     "fields": {},
@@ -75,6 +183,26 @@
         },
         {
           "type": "visibility",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "label",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "macro_call",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
           "named": true
         }
       ]
@@ -112,6 +240,11 @@
     }
   },
   {
+    "type": "opcode",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "return_parameters",
     "named": true,
     "fields": {},
@@ -142,11 +275,20 @@
     }
   },
   {
+    "type": "visibility",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": " = ",
     "named": false
   },
   {
     "type": " returns ",
+    "named": false
+  },
+  {
+    "type": "#define constant ",
     "named": false
   },
   {
@@ -162,31 +304,635 @@
     "named": false
   },
   {
-    "type": "block",
-    "named": true
+    "type": "()",
+    "named": false
+  },
+  {
+    "type": ":",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
+    "named": false
+  },
+  {
+    "type": "add",
+    "named": false
+  },
+  {
+    "type": "addmod",
+    "named": false
+  },
+  {
+    "type": "address",
+    "named": false
+  },
+  {
+    "type": "and",
+    "named": false
+  },
+  {
+    "type": "balance",
+    "named": false
+  },
+  {
+    "type": "basefee",
+    "named": false
+  },
+  {
+    "type": "blockhash",
+    "named": false
+  },
+  {
+    "type": "byte",
+    "named": false
+  },
+  {
+    "type": "call",
+    "named": false
+  },
+  {
+    "type": "callcode",
+    "named": false
+  },
+  {
+    "type": "calldatacopy",
+    "named": false
+  },
+  {
+    "type": "calldataload",
+    "named": false
+  },
+  {
+    "type": "calldatasize",
+    "named": false
+  },
+  {
+    "type": "caller",
+    "named": false
+  },
+  {
+    "type": "callvalue",
+    "named": false
+  },
+  {
+    "type": "chainid",
+    "named": false
+  },
+  {
+    "type": "codecopy",
+    "named": false
+  },
+  {
+    "type": "codesize",
+    "named": false
+  },
+  {
+    "type": "coinbase",
+    "named": false
   },
   {
     "type": "comment",
     "named": true
   },
   {
-    "type": "identifier",
+    "type": "create",
+    "named": false
+  },
+  {
+    "type": "create2",
+    "named": false
+  },
+  {
+    "type": "delegatecall",
+    "named": false
+  },
+  {
+    "type": "difficulty",
+    "named": false
+  },
+  {
+    "type": "div",
+    "named": false
+  },
+  {
+    "type": "dup1",
+    "named": false
+  },
+  {
+    "type": "dup10",
+    "named": false
+  },
+  {
+    "type": "dup11",
+    "named": false
+  },
+  {
+    "type": "dup12",
+    "named": false
+  },
+  {
+    "type": "dup13",
+    "named": false
+  },
+  {
+    "type": "dup14",
+    "named": false
+  },
+  {
+    "type": "dup15",
+    "named": false
+  },
+  {
+    "type": "dup16",
+    "named": false
+  },
+  {
+    "type": "dup2",
+    "named": false
+  },
+  {
+    "type": "dup3",
+    "named": false
+  },
+  {
+    "type": "dup4",
+    "named": false
+  },
+  {
+    "type": "dup5",
+    "named": false
+  },
+  {
+    "type": "dup6",
+    "named": false
+  },
+  {
+    "type": "dup7",
+    "named": false
+  },
+  {
+    "type": "dup8",
+    "named": false
+  },
+  {
+    "type": "dup9",
+    "named": false
+  },
+  {
+    "type": "eq",
+    "named": false
+  },
+  {
+    "type": "exp",
+    "named": false
+  },
+  {
+    "type": "extcodecopy",
+    "named": false
+  },
+  {
+    "type": "extcodesize",
+    "named": false
+  },
+  {
+    "type": "gas",
+    "named": false
+  },
+  {
+    "type": "gaslimit",
+    "named": false
+  },
+  {
+    "type": "gasprice",
+    "named": false
+  },
+  {
+    "type": "getpc",
+    "named": false
+  },
+  {
+    "type": "gt",
+    "named": false
+  },
+  {
+    "type": "hex",
     "named": true
+  },
+  {
+    "type": "invalid",
+    "named": false
+  },
+  {
+    "type": "iszero",
+    "named": false
+  },
+  {
+    "type": "jump",
+    "named": false
+  },
+  {
+    "type": "jumpdest",
+    "named": false
+  },
+  {
+    "type": "jumpi",
+    "named": false
+  },
+  {
+    "type": "keccak",
+    "named": false
+  },
+  {
+    "type": "log0",
+    "named": false
+  },
+  {
+    "type": "log1",
+    "named": false
+  },
+  {
+    "type": "log2",
+    "named": false
+  },
+  {
+    "type": "log3",
+    "named": false
+  },
+  {
+    "type": "log4",
+    "named": false
+  },
+  {
+    "type": "lt",
+    "named": false
+  },
+  {
+    "type": "mload",
+    "named": false
+  },
+  {
+    "type": "mod",
+    "named": false
+  },
+  {
+    "type": "msize",
+    "named": false
+  },
+  {
+    "type": "mstore",
+    "named": false
+  },
+  {
+    "type": "mstore8",
+    "named": false
+  },
+  {
+    "type": "mul",
+    "named": false
+  },
+  {
+    "type": "mulmod",
+    "named": false
+  },
+  {
+    "type": "nonpayable",
+    "named": false
+  },
+  {
+    "type": "not",
+    "named": false
+  },
+  {
+    "type": "number",
+    "named": false
+  },
+  {
+    "type": "or",
+    "named": false
+  },
+  {
+    "type": "origin",
+    "named": false
   },
   {
     "type": "parameters",
     "named": true
   },
   {
+    "type": "payable",
+    "named": false
+  },
+  {
+    "type": "pop",
+    "named": false
+  },
+  {
+    "type": "pure",
+    "named": false
+  },
+  {
+    "type": "push1",
+    "named": false
+  },
+  {
+    "type": "push10",
+    "named": false
+  },
+  {
+    "type": "push11",
+    "named": false
+  },
+  {
+    "type": "push12",
+    "named": false
+  },
+  {
+    "type": "push13",
+    "named": false
+  },
+  {
+    "type": "push14",
+    "named": false
+  },
+  {
+    "type": "push15",
+    "named": false
+  },
+  {
+    "type": "push16",
+    "named": false
+  },
+  {
+    "type": "push17",
+    "named": false
+  },
+  {
+    "type": "push18",
+    "named": false
+  },
+  {
+    "type": "push19",
+    "named": false
+  },
+  {
+    "type": "push2",
+    "named": false
+  },
+  {
+    "type": "push20",
+    "named": false
+  },
+  {
+    "type": "push21",
+    "named": false
+  },
+  {
+    "type": "push22",
+    "named": false
+  },
+  {
+    "type": "push23",
+    "named": false
+  },
+  {
+    "type": "push24",
+    "named": false
+  },
+  {
+    "type": "push25",
+    "named": false
+  },
+  {
+    "type": "push26",
+    "named": false
+  },
+  {
+    "type": "push27",
+    "named": false
+  },
+  {
+    "type": "push28",
+    "named": false
+  },
+  {
+    "type": "push29",
+    "named": false
+  },
+  {
+    "type": "push3",
+    "named": false
+  },
+  {
+    "type": "push30",
+    "named": false
+  },
+  {
+    "type": "push31",
+    "named": false
+  },
+  {
+    "type": "push32",
+    "named": false
+  },
+  {
+    "type": "push4",
+    "named": false
+  },
+  {
+    "type": "push5",
+    "named": false
+  },
+  {
+    "type": "push6",
+    "named": false
+  },
+  {
+    "type": "push7",
+    "named": false
+  },
+  {
+    "type": "push8",
+    "named": false
+  },
+  {
+    "type": "push9",
+    "named": false
+  },
+  {
+    "type": "return",
+    "named": false
+  },
+  {
+    "type": "returndatacopy",
+    "named": false
+  },
+  {
+    "type": "returndatasize",
+    "named": false
+  },
+  {
     "type": "returns_parameters",
     "named": true
+  },
+  {
+    "type": "revert",
+    "named": false
+  },
+  {
+    "type": "sar",
+    "named": false
+  },
+  {
+    "type": "sdiv",
+    "named": false
+  },
+  {
+    "type": "selfbalance",
+    "named": false
+  },
+  {
+    "type": "selfdestruct",
+    "named": false
+  },
+  {
+    "type": "sgt",
+    "named": false
+  },
+  {
+    "type": "sha3",
+    "named": false
+  },
+  {
+    "type": "shl",
+    "named": false
+  },
+  {
+    "type": "shr",
+    "named": false
+  },
+  {
+    "type": "signextend",
+    "named": false
+  },
+  {
+    "type": "sload",
+    "named": false
+  },
+  {
+    "type": "slt",
+    "named": false
+  },
+  {
+    "type": "smod",
+    "named": false
+  },
+  {
+    "type": "sstore",
+    "named": false
+  },
+  {
+    "type": "staticcall",
+    "named": false
+  },
+  {
+    "type": "stop",
+    "named": false
+  },
+  {
+    "type": "sub",
+    "named": false
+  },
+  {
+    "type": "swap1",
+    "named": false
+  },
+  {
+    "type": "swap10",
+    "named": false
+  },
+  {
+    "type": "swap11",
+    "named": false
+  },
+  {
+    "type": "swap12",
+    "named": false
+  },
+  {
+    "type": "swap13",
+    "named": false
+  },
+  {
+    "type": "swap14",
+    "named": false
+  },
+  {
+    "type": "swap15",
+    "named": false
+  },
+  {
+    "type": "swap16",
+    "named": false
+  },
+  {
+    "type": "swap2",
+    "named": false
+  },
+  {
+    "type": "swap3",
+    "named": false
+  },
+  {
+    "type": "swap4",
+    "named": false
+  },
+  {
+    "type": "swap5",
+    "named": false
+  },
+  {
+    "type": "swap6",
+    "named": false
+  },
+  {
+    "type": "swap7",
+    "named": false
+  },
+  {
+    "type": "swap8",
+    "named": false
+  },
+  {
+    "type": "swap9",
+    "named": false
   },
   {
     "type": "takes_parameters",
     "named": true
   },
   {
-    "type": "visibility",
-    "named": true
+    "type": "timestamp",
+    "named": false
+  },
+  {
+    "type": "view",
+    "named": false
+  },
+  {
+    "type": "xor",
+    "named": false
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "}",
+    "named": false
   }
 ]

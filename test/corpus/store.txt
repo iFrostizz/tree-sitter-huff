@@ -1,0 +1,32 @@
+==================
+Store
+==================
+
+#define macro SET_VALUE() = takes (0) returns (0) {
+    0x04 calldataload
+    [VALUE_LOCATION]
+    sstore
+}
+
+---
+
+(source_file
+  (definition
+    (macro_definition
+      (identifier)
+      (parameters)
+      (takes_parameters)
+      (returns_parameters)
+      (block
+        (hex)
+        (opcode)
+        
+        (const_access
+          (identifier)
+        )
+        
+        (opcode)
+      )
+    )
+  )
+)

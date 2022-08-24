@@ -22,6 +22,10 @@
         {
           "type": "SYMBOL",
           "name": "interface_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "constant_definition"
         }
       ]
     },
@@ -80,6 +84,23 @@
         }
       ]
     },
+    "_def_const": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "STRING",
+          "value": " = "
+        },
+        {
+          "type": "SYMBOL",
+          "name": "constant"
+        }
+      ]
+    },
     "def_val": {
       "type": "STRING",
       "value": "#define"
@@ -123,6 +144,19 @@
         }
       ]
     },
+    "constant_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "#define constant "
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_def_const"
+        }
+      ]
+    },
     "return_parameters": {
       "type": "SEQ",
       "members": [
@@ -145,20 +179,745 @@
       "value": "returns\\s?[(][0-9]+[)]"
     },
     "block": {
-      "type": "STRING",
-      "value": "{}"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_statement"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "_statement": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "opcode"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "label"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "hex"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "const_access"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "macro_call"
+        }
+      ]
+    },
+    "opcode": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "stop"
+        },
+        {
+          "type": "STRING",
+          "value": "add"
+        },
+        {
+          "type": "STRING",
+          "value": "mul"
+        },
+        {
+          "type": "STRING",
+          "value": "sub"
+        },
+        {
+          "type": "STRING",
+          "value": "div"
+        },
+        {
+          "type": "STRING",
+          "value": "sdiv"
+        },
+        {
+          "type": "STRING",
+          "value": "mod"
+        },
+        {
+          "type": "STRING",
+          "value": "smod"
+        },
+        {
+          "type": "STRING",
+          "value": "addmod"
+        },
+        {
+          "type": "STRING",
+          "value": "mulmod"
+        },
+        {
+          "type": "STRING",
+          "value": "exp"
+        },
+        {
+          "type": "STRING",
+          "value": "signextend"
+        },
+        {
+          "type": "STRING",
+          "value": "lt"
+        },
+        {
+          "type": "STRING",
+          "value": "gt"
+        },
+        {
+          "type": "STRING",
+          "value": "slt"
+        },
+        {
+          "type": "STRING",
+          "value": "sgt"
+        },
+        {
+          "type": "STRING",
+          "value": "eq"
+        },
+        {
+          "type": "STRING",
+          "value": "iszero"
+        },
+        {
+          "type": "STRING",
+          "value": "and"
+        },
+        {
+          "type": "STRING",
+          "value": "or"
+        },
+        {
+          "type": "STRING",
+          "value": "xor"
+        },
+        {
+          "type": "STRING",
+          "value": "not"
+        },
+        {
+          "type": "STRING",
+          "value": "byte"
+        },
+        {
+          "type": "STRING",
+          "value": "sha3"
+        },
+        {
+          "type": "STRING",
+          "value": "keccak"
+        },
+        {
+          "type": "STRING",
+          "value": "address"
+        },
+        {
+          "type": "STRING",
+          "value": "balance"
+        },
+        {
+          "type": "STRING",
+          "value": "origin"
+        },
+        {
+          "type": "STRING",
+          "value": "caller"
+        },
+        {
+          "type": "STRING",
+          "value": "callvalue"
+        },
+        {
+          "type": "STRING",
+          "value": "calldataload"
+        },
+        {
+          "type": "STRING",
+          "value": "calldatasize"
+        },
+        {
+          "type": "STRING",
+          "value": "calldatacopy"
+        },
+        {
+          "type": "STRING",
+          "value": "codesize"
+        },
+        {
+          "type": "STRING",
+          "value": "codecopy"
+        },
+        {
+          "type": "STRING",
+          "value": "gasprice"
+        },
+        {
+          "type": "STRING",
+          "value": "extcodesize"
+        },
+        {
+          "type": "STRING",
+          "value": "extcodecopy"
+        },
+        {
+          "type": "STRING",
+          "value": "returndatasize"
+        },
+        {
+          "type": "STRING",
+          "value": "returndatacopy"
+        },
+        {
+          "type": "STRING",
+          "value": "blockhash"
+        },
+        {
+          "type": "STRING",
+          "value": "coinbase"
+        },
+        {
+          "type": "STRING",
+          "value": "timestamp"
+        },
+        {
+          "type": "STRING",
+          "value": "number"
+        },
+        {
+          "type": "STRING",
+          "value": "difficulty"
+        },
+        {
+          "type": "STRING",
+          "value": "gaslimit"
+        },
+        {
+          "type": "STRING",
+          "value": "chainid"
+        },
+        {
+          "type": "STRING",
+          "value": "selfbalance"
+        },
+        {
+          "type": "STRING",
+          "value": "basefee"
+        },
+        {
+          "type": "STRING",
+          "value": "pop"
+        },
+        {
+          "type": "STRING",
+          "value": "mload"
+        },
+        {
+          "type": "STRING",
+          "value": "mstore"
+        },
+        {
+          "type": "STRING",
+          "value": "mstore8"
+        },
+        {
+          "type": "STRING",
+          "value": "sload"
+        },
+        {
+          "type": "STRING",
+          "value": "sstore"
+        },
+        {
+          "type": "STRING",
+          "value": "jump"
+        },
+        {
+          "type": "STRING",
+          "value": "jumpi"
+        },
+        {
+          "type": "STRING",
+          "value": "getpc"
+        },
+        {
+          "type": "STRING",
+          "value": "msize"
+        },
+        {
+          "type": "STRING",
+          "value": "gas"
+        },
+        {
+          "type": "STRING",
+          "value": "jumpdest"
+        },
+        {
+          "type": "STRING",
+          "value": "push1"
+        },
+        {
+          "type": "STRING",
+          "value": "push2"
+        },
+        {
+          "type": "STRING",
+          "value": "push3"
+        },
+        {
+          "type": "STRING",
+          "value": "push4"
+        },
+        {
+          "type": "STRING",
+          "value": "push5"
+        },
+        {
+          "type": "STRING",
+          "value": "push6"
+        },
+        {
+          "type": "STRING",
+          "value": "push7"
+        },
+        {
+          "type": "STRING",
+          "value": "push8"
+        },
+        {
+          "type": "STRING",
+          "value": "push9"
+        },
+        {
+          "type": "STRING",
+          "value": "push10"
+        },
+        {
+          "type": "STRING",
+          "value": "push11"
+        },
+        {
+          "type": "STRING",
+          "value": "push12"
+        },
+        {
+          "type": "STRING",
+          "value": "push13"
+        },
+        {
+          "type": "STRING",
+          "value": "push14"
+        },
+        {
+          "type": "STRING",
+          "value": "push15"
+        },
+        {
+          "type": "STRING",
+          "value": "push16"
+        },
+        {
+          "type": "STRING",
+          "value": "push17"
+        },
+        {
+          "type": "STRING",
+          "value": "push18"
+        },
+        {
+          "type": "STRING",
+          "value": "push19"
+        },
+        {
+          "type": "STRING",
+          "value": "push20"
+        },
+        {
+          "type": "STRING",
+          "value": "push21"
+        },
+        {
+          "type": "STRING",
+          "value": "push22"
+        },
+        {
+          "type": "STRING",
+          "value": "push23"
+        },
+        {
+          "type": "STRING",
+          "value": "push24"
+        },
+        {
+          "type": "STRING",
+          "value": "push25"
+        },
+        {
+          "type": "STRING",
+          "value": "push26"
+        },
+        {
+          "type": "STRING",
+          "value": "push27"
+        },
+        {
+          "type": "STRING",
+          "value": "push28"
+        },
+        {
+          "type": "STRING",
+          "value": "push29"
+        },
+        {
+          "type": "STRING",
+          "value": "push30"
+        },
+        {
+          "type": "STRING",
+          "value": "push31"
+        },
+        {
+          "type": "STRING",
+          "value": "push32"
+        },
+        {
+          "type": "STRING",
+          "value": "dup1"
+        },
+        {
+          "type": "STRING",
+          "value": "dup2"
+        },
+        {
+          "type": "STRING",
+          "value": "dup3"
+        },
+        {
+          "type": "STRING",
+          "value": "dup4"
+        },
+        {
+          "type": "STRING",
+          "value": "dup5"
+        },
+        {
+          "type": "STRING",
+          "value": "dup6"
+        },
+        {
+          "type": "STRING",
+          "value": "dup7"
+        },
+        {
+          "type": "STRING",
+          "value": "dup8"
+        },
+        {
+          "type": "STRING",
+          "value": "dup9"
+        },
+        {
+          "type": "STRING",
+          "value": "dup10"
+        },
+        {
+          "type": "STRING",
+          "value": "dup11"
+        },
+        {
+          "type": "STRING",
+          "value": "dup12"
+        },
+        {
+          "type": "STRING",
+          "value": "dup13"
+        },
+        {
+          "type": "STRING",
+          "value": "dup14"
+        },
+        {
+          "type": "STRING",
+          "value": "dup15"
+        },
+        {
+          "type": "STRING",
+          "value": "dup16"
+        },
+        {
+          "type": "STRING",
+          "value": "swap1"
+        },
+        {
+          "type": "STRING",
+          "value": "swap2"
+        },
+        {
+          "type": "STRING",
+          "value": "swap3"
+        },
+        {
+          "type": "STRING",
+          "value": "swap4"
+        },
+        {
+          "type": "STRING",
+          "value": "swap5"
+        },
+        {
+          "type": "STRING",
+          "value": "swap6"
+        },
+        {
+          "type": "STRING",
+          "value": "swap7"
+        },
+        {
+          "type": "STRING",
+          "value": "swap8"
+        },
+        {
+          "type": "STRING",
+          "value": "swap9"
+        },
+        {
+          "type": "STRING",
+          "value": "swap10"
+        },
+        {
+          "type": "STRING",
+          "value": "swap11"
+        },
+        {
+          "type": "STRING",
+          "value": "swap12"
+        },
+        {
+          "type": "STRING",
+          "value": "swap13"
+        },
+        {
+          "type": "STRING",
+          "value": "swap14"
+        },
+        {
+          "type": "STRING",
+          "value": "swap15"
+        },
+        {
+          "type": "STRING",
+          "value": "swap16"
+        },
+        {
+          "type": "STRING",
+          "value": "shl"
+        },
+        {
+          "type": "STRING",
+          "value": "shr"
+        },
+        {
+          "type": "STRING",
+          "value": "sar"
+        },
+        {
+          "type": "STRING",
+          "value": "log0"
+        },
+        {
+          "type": "STRING",
+          "value": "log1"
+        },
+        {
+          "type": "STRING",
+          "value": "log2"
+        },
+        {
+          "type": "STRING",
+          "value": "log3"
+        },
+        {
+          "type": "STRING",
+          "value": "log4"
+        },
+        {
+          "type": "STRING",
+          "value": "create"
+        },
+        {
+          "type": "STRING",
+          "value": "call"
+        },
+        {
+          "type": "STRING",
+          "value": "callcode"
+        },
+        {
+          "type": "STRING",
+          "value": "return"
+        },
+        {
+          "type": "STRING",
+          "value": "delegatecall"
+        },
+        {
+          "type": "STRING",
+          "value": "create2"
+        },
+        {
+          "type": "STRING",
+          "value": "staticcall"
+        },
+        {
+          "type": "STRING",
+          "value": "revert"
+        },
+        {
+          "type": "STRING",
+          "value": "invalid"
+        },
+        {
+          "type": "STRING",
+          "value": "selfdestruct"
+        }
+      ]
+    },
+    "label": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_label"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_destination"
+        }
+      ]
+    },
+    "_label": {
+      "type": "PATTERN",
+      "value": "[A-Za-z_]+"
+    },
+    "_destination": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[A-Za-z_]+"
+        },
+        {
+          "type": "STRING",
+          "value": ":"
+        }
+      ]
+    },
+    "hex": {
+      "type": "PATTERN",
+      "value": "0[xX][0-9a-fA-F]+"
+    },
+    "const_access": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
+    },
+    "macro_call": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "STRING",
+          "value": "()"
+        }
+      ]
+    },
+    "const": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "STRING",
+          "value": "()"
+        }
+      ]
     },
     "identifier": {
       "type": "PATTERN",
-      "value": "([A-Za-z]+)"
+      "value": "[A-Za-z_]+"
     },
     "parameters": {
       "type": "PATTERN",
       "value": "[(](?:[A-Za-z0-9\\[\\],\\s]+)?[)]"
     },
     "visibility": {
-      "type": "STRING",
-      "value": "pure"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "view"
+        },
+        {
+          "type": "STRING",
+          "value": "pure"
+        },
+        {
+          "type": "STRING",
+          "value": "payable"
+        },
+        {
+          "type": "STRING",
+          "value": "nonpayable"
+        }
+      ]
+    },
+    "constant": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "const"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "hex"
+        }
+      ]
     },
     "comment": {
       "type": "TOKEN",

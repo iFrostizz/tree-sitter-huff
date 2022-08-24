@@ -1,0 +1,22 @@
+==================
+Constant
+==================
+
+/* Storage slots */
+#define constant VALUE_LOCATION = FREE_STORAGE_POINTER()
+
+---
+
+(source_file
+  (comment)
+  (definition
+    (constant_definition
+      (identifier)
+      (constant
+        (const
+          (identifier)
+        )
+      )
+    )
+  )
+)
