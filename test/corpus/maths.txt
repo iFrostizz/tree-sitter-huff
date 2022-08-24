@@ -1,0 +1,40 @@
+==================
+SafeMath
+==================
+
+// Interface
+#define function safeAdd(uint256,uint256) pure returns (uint256)
+
+// Methods
+#defined macro SAFE_ADD() = takes (0) returns (0) {
+    0x04 calldataload        // [a]
+    0x24 calldataload        // [b, a]
+    dup2                     // [a, b, a]
+    add                      // [a + b, a]
+    dup1                     // [a + b, a + b, a]
+    swap2                    // [a + b, a, a + b]
+    gt                       // [a + b > a ?, a + b]
+    iszero                   // [a >= a + b ?, a + b] is overflow ?
+    jumpi                    // [a + b]
+        0x00 0x00 revert
+    0x00 mstore              // []
+    0x20 0x00 return         // []
+}
+
+// Main
+#define macro MAIN() = takes (0) returns (0) {
+    0x00 calldataload 0xE0 shr
+    dup1 0xe6cb9013 eq safe_add jumpi
+    
+    0x00 0x00 revert
+    
+    safe_add:
+        SAFE_ADD()
+}
+
+---
+
+(source_file
+  (interface
+  )
+)

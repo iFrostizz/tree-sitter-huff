@@ -10,6 +10,7 @@ Sample contract
   (definition
     (macro_definition
       (identifier)
+      (parameters)
       (takes_parameters)
       (returns_parameters)
       (block)

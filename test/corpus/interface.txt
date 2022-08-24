@@ -1,0 +1,21 @@
+==================
+Interface
+==================
+
+// Interface
+#define function safeAdd(uint256,uint256) pure returns (uint256)
+
+---
+
+(source_file
+  (comment)
+  (definition
+    (interface_definition
+      (identifier)
+      (parameters)
+      (visibility)
+      (return_parameters
+        (parameters))
+    )
+  )  
+)
