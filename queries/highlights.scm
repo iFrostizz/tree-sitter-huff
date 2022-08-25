@@ -8,4 +8,8 @@
 
 (comment) @comment
 
-(parameters) @variable.parameter
+(parameter) @variable.parameter
+
+(def_val) @function.builtin
+
+(visibility) @keyword

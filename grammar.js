@@ -182,19 +182,23 @@ module.exports = grammar({
     ),
     def_val: $ => '#define',
     macro_definition: $ => seq(
-      '#define macro ',
+      $.def_val,
+      ' macro ',
       $._def,
     ),
     function_definition: $ => seq(
-      '#define fn ',
+      $.def_val,
+      ' fn ',
       $._def,
     ),
     interface_definition: $ => seq(
-      '#define function ',
+      $.def_val,
+      ' function ',
       $._def_params,
     ),
     constant_definition: $ => seq(
-      '#define constant ',
+      $.def_val,
+      ' constant ',
       $._def_const,
     ),
     return_parameters: $ => seq(
@@ -239,14 +243,21 @@ module.exports = grammar({
                   $.identifier,
                   "()",
                 ),
-    // identifier: $ => /([A-Za-z]+)\(\)( = )/,
     identifier: $ => /[A-Za-z_]+/,
-    // TODO: distinct inner and parenthesis
-    parameters: $ => /[(](?:[A-Za-z0-9\[\],\s]+)?[)]/,
-    /*parameters: $ => seq(
+    parameters: $ => seq(
       "(",
-      ")",
-    ),*/ // TODO: use seq
+      repeat(
+        seq(
+          $.parameter,
+          /[,]?/,
+        )
+      ),
+      ")"
+    ),
+    parameter: $ => seq(
+      $._single_parameter,
+    ),
+    _single_parameter: $ => /[A-Za-z0-9]+/,
     visibility: $ => choice(
       "view",
       "pure",

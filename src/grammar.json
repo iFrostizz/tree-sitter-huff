@@ -109,8 +109,12 @@
       "type": "SEQ",
       "members": [
         {
+          "type": "SYMBOL",
+          "name": "def_val"
+        },
+        {
           "type": "STRING",
-          "value": "#define macro "
+          "value": " macro "
         },
         {
           "type": "SYMBOL",
@@ -122,8 +126,12 @@
       "type": "SEQ",
       "members": [
         {
+          "type": "SYMBOL",
+          "name": "def_val"
+        },
+        {
           "type": "STRING",
-          "value": "#define fn "
+          "value": " fn "
         },
         {
           "type": "SYMBOL",
@@ -135,8 +143,12 @@
       "type": "SEQ",
       "members": [
         {
+          "type": "SYMBOL",
+          "name": "def_val"
+        },
+        {
           "type": "STRING",
-          "value": "#define function "
+          "value": " function "
         },
         {
           "type": "SYMBOL",
@@ -148,8 +160,12 @@
       "type": "SEQ",
       "members": [
         {
+          "type": "SYMBOL",
+          "name": "def_val"
+        },
+        {
           "type": "STRING",
-          "value": "#define constant "
+          "value": " constant "
         },
         {
           "type": "SYMBOL",
@@ -882,8 +898,46 @@
       "value": "[A-Za-z_]+"
     },
     "parameters": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "parameter"
+              },
+              {
+                "type": "PATTERN",
+                "value": "[,]?"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "parameter": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_single_parameter"
+        }
+      ]
+    },
+    "_single_parameter": {
       "type": "PATTERN",
-      "value": "[(](?:[A-Za-z0-9\\[\\],\\s]+)?[)]"
+      "value": "[A-Za-z0-9]+"
     },
     "visibility": {
       "type": "CHOICE",

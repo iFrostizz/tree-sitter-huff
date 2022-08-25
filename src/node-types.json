@@ -92,6 +92,10 @@
           "named": true
         },
         {
+          "type": "def_val",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         }
@@ -138,6 +142,10 @@
           "named": true
         },
         {
+          "type": "def_val",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -169,6 +177,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "def_val",
+          "named": true
+        },
         {
           "type": "identifier",
           "named": true
@@ -221,6 +233,10 @@
           "named": true
         },
         {
+          "type": "def_val",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -243,6 +259,26 @@
     "type": "opcode",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "parameter",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "parameters",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "parameter",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "return_parameters",
@@ -284,27 +320,35 @@
     "named": false
   },
   {
+    "type": " constant ",
+    "named": false
+  },
+  {
+    "type": " fn ",
+    "named": false
+  },
+  {
+    "type": " function ",
+    "named": false
+  },
+  {
+    "type": " macro ",
+    "named": false
+  },
+  {
     "type": " returns ",
     "named": false
   },
   {
-    "type": "#define constant ",
-    "named": false
-  },
-  {
-    "type": "#define fn ",
-    "named": false
-  },
-  {
-    "type": "#define function ",
-    "named": false
-  },
-  {
-    "type": "#define macro ",
+    "type": "(",
     "named": false
   },
   {
     "type": "()",
+    "named": false
+  },
+  {
+    "type": ")",
     "named": false
   },
   {
@@ -406,6 +450,10 @@
   {
     "type": "create2",
     "named": false
+  },
+  {
+    "type": "def_val",
+    "named": true
   },
   {
     "type": "delegatecall",
@@ -618,10 +666,6 @@
   {
     "type": "origin",
     "named": false
-  },
-  {
-    "type": "parameters",
-    "named": true
   },
   {
     "type": "payable",
