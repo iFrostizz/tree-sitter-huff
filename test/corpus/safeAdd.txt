@@ -24,11 +24,23 @@ SafeAdd
 
 (source_file
   (definition
-    (macro_definition
+    (keyword_definition
+      (def_val)
+      (keyword)
       (identifier)
       (parameters)
-      (takes_parameters)
-      (returns_parameters)
+      (val_parameters
+        (keyword)
+        (parameters
+          (parameter)
+        )
+      )
+      (val_parameters
+        (keyword)
+        (parameters
+          (parameter)
+        )
+      )
       (block
           (hex)
           (opcode)

@@ -154,8 +154,7 @@ module.exports = grammar({
   rules: {
     source_file: $ => repeat($.definition),
     definition: $ => choice(
-      $.macro_definition,
-      $.function_definition,
+      $.keyword_definition,
       $.interface_definition,
       $.constant_definition,
     ),
@@ -163,17 +162,10 @@ module.exports = grammar({
       $.identifier,
       $.parameters,
     ),
-    _def: $ => seq(
-      $._declaration,
-      ' = ',
-      $.takes_parameters,
-      $.returns_parameters,
-      $.block
-    ),
     _def_params: $ => seq(
       $._declaration,
       $.visibility,
-      $.return_parameters,
+      $.val_parameters,
     ),
     _def_const: $ => seq(
       $.identifier,
@@ -181,32 +173,40 @@ module.exports = grammar({
       $.constant,
     ),
     def_val: $ => '#define',
-    macro_definition: $ => seq(
-      $.def_val,
-      ' macro ',
-      $._def,
+    keyword: $ => choice(
+      'macro',
+      'fn',
+      'takes',
+      'returns',
+      'function',
+      'constant',
     ),
-    function_definition: $ => seq(
+    _def: $ => seq(
+      $._declaration,
+      ' = ',
+      $.val_parameters,
+      $.val_parameters,
+      $.block
+    ),
+    keyword_definition: $ => seq(
       $.def_val,
-      ' fn ',
-      $._def,
+      $.keyword,
+      $._def
     ),
     interface_definition: $ => seq(
       $.def_val,
-      ' function ',
+      $.keyword,
       $._def_params,
     ),
     constant_definition: $ => seq(
       $.def_val,
-      ' constant ',
+      $.keyword,
       $._def_const,
     ),
-    return_parameters: $ => seq(
-      ' returns ',
-      $.parameters,
+    val_parameters: $ => seq(
+      $.keyword,
+      $.parameters
     ),
-    takes_parameters: $ => /takes\s?[(][0-9]+[)]/,
-    returns_parameters: $ => /returns\s?[(][0-9]+[)]/,
     block: $ => seq(
       '{',
       repeat($._statement),

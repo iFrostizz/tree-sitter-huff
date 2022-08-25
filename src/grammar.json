@@ -13,11 +13,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "macro_definition"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "function_definition"
+          "name": "keyword_definition"
         },
         {
           "type": "SYMBOL",
@@ -42,31 +38,6 @@
         }
       ]
     },
-    "_def": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_declaration"
-        },
-        {
-          "type": "STRING",
-          "value": " = "
-        },
-        {
-          "type": "SYMBOL",
-          "name": "takes_parameters"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "returns_parameters"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "block"
-        }
-      ]
-    },
     "_def_params": {
       "type": "SEQ",
       "members": [
@@ -80,7 +51,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "return_parameters"
+          "name": "val_parameters"
         }
       ]
     },
@@ -105,24 +76,61 @@
       "type": "STRING",
       "value": "#define"
     },
-    "macro_definition": {
-      "type": "SEQ",
+    "keyword": {
+      "type": "CHOICE",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "def_val"
+          "type": "STRING",
+          "value": "macro"
         },
         {
           "type": "STRING",
-          "value": " macro "
+          "value": "fn"
         },
         {
-          "type": "SYMBOL",
-          "name": "_def"
+          "type": "STRING",
+          "value": "takes"
+        },
+        {
+          "type": "STRING",
+          "value": "returns"
+        },
+        {
+          "type": "STRING",
+          "value": "function"
+        },
+        {
+          "type": "STRING",
+          "value": "constant"
         }
       ]
     },
-    "function_definition": {
+    "_def": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_declaration"
+        },
+        {
+          "type": "STRING",
+          "value": " = "
+        },
+        {
+          "type": "SYMBOL",
+          "name": "val_parameters"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "val_parameters"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "block"
+        }
+      ]
+    },
+    "keyword_definition": {
       "type": "SEQ",
       "members": [
         {
@@ -130,8 +138,8 @@
           "name": "def_val"
         },
         {
-          "type": "STRING",
-          "value": " fn "
+          "type": "SYMBOL",
+          "name": "keyword"
         },
         {
           "type": "SYMBOL",
@@ -147,8 +155,8 @@
           "name": "def_val"
         },
         {
-          "type": "STRING",
-          "value": " function "
+          "type": "SYMBOL",
+          "name": "keyword"
         },
         {
           "type": "SYMBOL",
@@ -164,8 +172,8 @@
           "name": "def_val"
         },
         {
-          "type": "STRING",
-          "value": " constant "
+          "type": "SYMBOL",
+          "name": "keyword"
         },
         {
           "type": "SYMBOL",
@@ -173,26 +181,18 @@
         }
       ]
     },
-    "return_parameters": {
+    "val_parameters": {
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": " returns "
+          "type": "SYMBOL",
+          "name": "keyword"
         },
         {
           "type": "SYMBOL",
           "name": "parameters"
         }
       ]
-    },
-    "takes_parameters": {
-      "type": "PATTERN",
-      "value": "takes\\s?[(][0-9]+[)]"
-    },
-    "returns_parameters": {
-      "type": "PATTERN",
-      "value": "returns\\s?[(][0-9]+[)]"
     },
     "block": {
       "type": "SEQ",

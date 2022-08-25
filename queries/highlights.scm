@@ -13,3 +13,10 @@
 (def_val) @function.builtin
 
 (visibility) @keyword
+
+(hex) @number
+(opcode) @constant
+(label) @function.method
+
+(keyword) @keyword
+

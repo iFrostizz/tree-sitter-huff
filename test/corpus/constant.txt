@@ -11,6 +11,8 @@ Constant
   (comment)
   (definition
     (constant_definition
+      (def_val)
+      (keyword)
       (identifier)
       (constant
         (const

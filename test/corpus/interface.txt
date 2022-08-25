@@ -11,11 +11,19 @@ Interface
   (comment)
   (definition
     (interface_definition
+      (def_val)
+      (keyword)
       (identifier)
-      (parameters)
+      (parameters
+        (parameter)
+        (parameter)
+      )
       (visibility)
-      (return_parameters
-        (parameters))
+      (val_parameters
+        (keyword)
+        (parameters
+          (parameter)
+        ))
     )
   )  
 )
