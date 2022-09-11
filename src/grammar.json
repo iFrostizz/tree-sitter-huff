@@ -214,6 +214,47 @@
         }
       ]
     },
+    "stack_assertion": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "$"
+        },
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "parameter"
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": ","
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
+    },
     "_statement": {
       "type": "CHOICE",
       "members": [
@@ -236,6 +277,10 @@
         {
           "type": "SYMBOL",
           "name": "macro_call"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "stack_assertion"
         }
       ]
     },

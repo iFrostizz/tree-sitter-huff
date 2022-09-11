@@ -26,6 +26,10 @@
         {
           "type": "opcode",
           "named": true
+        },
+        {
+          "type": "stack_assertion",
+          "named": true
         }
       ]
     }
@@ -270,6 +274,21 @@
     }
   },
   {
+    "type": "stack_assertion",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "parameter",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "val_parameters",
     "named": true,
     "fields": {},
@@ -298,6 +317,10 @@
     "named": false
   },
   {
+    "type": "$",
+    "named": false
+  },
+  {
     "type": "(",
     "named": false
   },
@@ -307,6 +330,10 @@
   },
   {
     "type": ")",
+    "named": false
+  },
+  {
+    "type": ",",
     "named": false
   },
   {

@@ -9,19 +9,18 @@
 `git clone https://github.com/iFrostizz/tree-sitter-huff`
 
 it contains the highlight query, used to create fancy colors for huff files
-This `highlights.scm` will need to be referenced locally, so you can use a symbolic link.
-But first, create the `ħuff` directory so you can reference it just after:
+This `highlights.scm` will need to be referenced locally.
+But first, create the `huff` directory so you can reference it just after:
 
 `mkdir helix/runtime/queries/huff`
 
-then the symlink:
+then copy the file into helix dir:
 
-`ln -s tree-sitter-huff/queries/highlights.scm helix/runtime/queries/huff/highlights.scm`
+`cp tree-sitter-huff/queries/highlights.scm helix/runtime/queries/huff`
 
 now you will need to put the `huff` language in the `languages.toml` file of the helix repo, to add it:
 
 ```toml
-# helix/runtime/languages.toml
 [[language]]
 name = "huff"
 scope = "source.huff"

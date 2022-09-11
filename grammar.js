@@ -212,12 +212,24 @@ module.exports = grammar({
       repeat($._statement),
       '}',
     ),
+    stack_assertion: $ => seq(
+      '$',
+      '[',
+      repeat(
+        seq(
+          $.parameter,
+          optional(','),
+        )
+      ),
+      ']'
+    ),
     _statement: $ => choice(
       $.opcode,
       $.label,
       $.hex,
       $.const_access,
       $.macro_call,
+      $.stack_assertion,
     ),
     opcode: $ => choice(...CODES),
     label: $ => choice(
