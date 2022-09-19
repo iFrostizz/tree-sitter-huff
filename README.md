@@ -26,11 +26,11 @@ name = "huff"
 scope = "source.huff"
 roots = []
 file-types = ["huff"]
-indent = { tab-width = 2, unit = "  " }
+indent = { tab-width = 4, unit = "  " }
 
 [[grammar]]
 name = "huff"
-source = { git = "https://github.com/iFrostizz/tree-sitter-huff", rev = "74e18a98f0f606ef5800fc7a9b4bcd2f1532cfd7"}
+source = { git = "https://github.com/iFrostizz/tree-sitter-huff", rev = "b159354ee2ec3ac2d8fb5c722944dced77d6c249"}
 ```
 
 and now you should be good, all you gotta do it build it !

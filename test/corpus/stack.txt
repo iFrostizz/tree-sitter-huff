@@ -1,0 +1,59 @@
+==================
+Stack
+==================
+
+#define macro CONSTRUCTOR() = takes (0) returns (0) {
+	0x20				$ [size]
+	0x20 codesize sub	$ [offset, size]
+	0x00				$ [mem, offset, size]
+	codecopy			$ []
+}
+
+---
+
+(source_file
+  (definition
+    (keyword_definition
+      (def_val)
+      (keyword)
+      (identifier)
+	  (parameters)
+	  (val_parameters
+	    (keyword)
+	    (parameters
+		  (parameter)
+		)
+	  )
+	  (val_parameters
+	    (keyword)
+	    (parameters
+		  (parameter)
+		)
+	  )
+	  (block
+		(hex)
+		(stack_assertion
+		  (parameter)
+		)
+
+		(hex)
+		(opcode)
+		(opcode)
+	    (stack_assertion
+		  (parameter)
+		  (parameter)
+		)
+
+		(hex)
+		(stack_assertion
+		  (parameter)
+		  (parameter)
+		  (parameter)
+		)
+		
+		(opcode)
+	    (stack_assertion)
+	  )
+    )
+  )
+)
